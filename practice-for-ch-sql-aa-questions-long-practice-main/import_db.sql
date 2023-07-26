@@ -65,6 +65,7 @@ INSERT INTO
 VALUES
     (1, 'What is this', 'very long q about a body thing', 1),
     (2, 'meh', 'i tryed meh', 2);
+    -- (3, 'question?', 'what question are we having?', 3);
 
 
 INSERT INTO
@@ -78,10 +79,14 @@ INSERT INTO
     replies (id, body, pre_question_id, parent_reply_id, user_id)
 VALUES
     (1, 'You did''t try hard enough', 2, NULL, 1),
-    (2, 'It''s a... I don''t know.', 1, NULL, 2);
+    (2, 'It''s a... I don''t know.', 1, NULL, 2),
+    (3, 'Yes, I did.', 2, 1, 2);
 
 INSERT INTO
     question_likes (id, liked, question_id, user_id)
 VALUES
     (1, 'true', 1, 1),
     (2, 'true', 2, 2);
+
+
+

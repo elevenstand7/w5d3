@@ -51,6 +51,10 @@ class Question
     @author_id = options['author_id']
   end
 
+  def author
+    Question.
+
+  end
   attr_accessor :id, :title, :body, :author_id
 end
 
@@ -92,6 +96,14 @@ class User
     @id = options['id']
     @fname = options['fname']
     @lname = options['lname']
+  end
+
+  def authored_questions
+    Question.find_by_author_id(self.id)
+  end
+
+  def authored_replies
+    Replies.find_by_user_id(self.id)
   end
 
   attr_accessor :id, :fname, :lname
@@ -159,17 +171,18 @@ class Replies
       Replies.new(reply.first)
     end
 
-    def self.find_by_question_id(question_id)
-      reply = QuestionsDatabase.instance.execute(<<-SQL, question_id)
+    def self.find_by_question_id(pre_question_id)
+      reply = QuestionsDatabase.instance.execute(<<-SQL, pre_question_id)
       SELECT
         *
       FROM
         replies
       WHERE
-        question_id = ?
+        pre_question_id  = ?
       SQL
       return nil unless reply.length > 0
-      Replies.new(reply.first)
+      # Replies.new(reply.first)
+      reply.map{|rp| Replies.new(rp)}
     end
 
     def initialize(options)
