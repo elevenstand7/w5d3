@@ -52,7 +52,7 @@ class Question
   end
 
   def author
-    Question.
+    # Question.
 
   end
   attr_accessor :id, :title, :body, :author_id
@@ -219,10 +219,10 @@ class QuestionLikes
 
   def initialize(options)
     @id = options['id']
-    @liked = options['liked']
+    # @liked = options['liked']
     @question_id = options['question_id']
     @user_id = options['user_id']
   end
 
-  attr_accessor :id, :liked, :question_id, :user_id
+  attr_accessor :id, :question_id, :user_id
 end
