@@ -33,7 +33,7 @@ CREATE TABLE replies(
     id INTEGER PRIMARY KEY,
     body TEXT NOT NULL,
     pre_question_id INTEGER NOT NULL,
-    parent_reply_id INTEGER NOT NULL,
+    parent_reply_id INTEGER,
     user_id INTEGER NOT NULL,
 
     FOREIGN KEY (pre_question_id) REFERENCES questions(id),
@@ -44,7 +44,8 @@ CREATE TABLE replies(
 
 
 CREATE TABLE question_likes(
-    liked BOOLEAN NOT NULL,
+    id INTEGER PRIMARY KEY,
+    liked BOOLEAN DEFAULT 'false',
     question_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
     FOREIGN KEY (question_id) REFERENCES questions(id),
@@ -64,3 +65,23 @@ INSERT INTO
 VALUES
     (1, 'What is this', 'very long q about a body thing', 1),
     (2, 'meh', 'i tryed meh', 2);
+
+
+INSERT INTO
+    question_follows (id, user_id, question_id)
+VALUES
+    (1, 1, 2),
+    (2, 2, 1);
+
+
+INSERT INTO
+    replies (id, body, pre_question_id, parent_reply_id, user_id)
+VALUES
+    (1, 'You did''t try hard enough', 2, NULL, 1),
+    (2, 'It''s a... I don''t know.', 1, NULL, 2);
+
+INSERT INTO
+    question_likes (id, liked, question_id, user_id)
+VALUES
+    (1, 'true', 1, 1),
+    (2, 'true', 2, 2);
