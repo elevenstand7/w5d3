@@ -1,13 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    sqlite3 (1.6.3-x86_64-darwin)
+    sqlite3 (1.6.3-arm64-darwin)
 
 PLATFORMS
-  x86_64-darwin-20
+  arm64-darwin-22
 
 DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   2.4.14
+   2.4.12
