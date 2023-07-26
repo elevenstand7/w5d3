@@ -15,17 +15,26 @@ FOREIGN KEY (author) REFERENCES users(id)
 );
 
 CREATE TABLE question_follows(
-
+user_id INTEGER NOT NULL,
+question_id INTEGER NOT NULL
 )
 
 
 
 CREATE TABLE replies(
-
+    id INTEGER PRIMARY KEY,
+    body TEXT NOT NULL,
+    pre_question_id INTEGER NOT NULL,
+    parent_reply_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
+    FOREIGN KEY (pre_question_id) REFERENCES questions(id),
+    FOREIGN KEY (parent_reply_id) REFERENCES replies(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
 )
 
 
 
 CREATE TABLE question_likes(
+
 
 )
