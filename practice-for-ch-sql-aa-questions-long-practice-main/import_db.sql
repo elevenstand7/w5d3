@@ -22,6 +22,7 @@ FOREIGN KEY (author_id) REFERENCES users(id)
 );
 
 CREATE TABLE question_follows(
+id INTEGER PRIMARY KEY,
 user_id INTEGER NOT NULL,
 question_id INTEGER NOT NULL
 );
